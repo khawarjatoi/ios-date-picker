@@ -19,7 +19,7 @@ export default () => {
       <div style={{ margin: '25px 20%' }}>
         <div className='pick' style={{ ...dateStyle }}>
           Pick
-          <span style={{ color: 'blue' }}>a Date</span>
+          <span style={{ color: 'rgb(70, 86, 230)' }}>a Date</span>
         </div>
       </div>
       <div
