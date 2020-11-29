@@ -1,11 +1,12 @@
 .wheel {
   display: block;
-  color: #fff;
+  /* color: #fff; */
+  color: rgb(70, 86, 230);
   height: 100%;
   overflow: visible;
   width: 100%;
 }
-.wheel--perspective-right .wheel__inner {
+/* .wheel--perspective-right .wheel__inner {
   perspective-origin: calc(50% + 100px) 50%;
   transform: translateX(10px);
   -webkit-transform: translateX(10px);
@@ -14,7 +15,7 @@
   perspective-origin: calc(50% - 100px) 50%;
   transform: translateX(-10px);
   -webkit-transform: translateX(-10px);
-}
+} */
 
 .wheel__inner {
   display: flex;
@@ -36,27 +37,28 @@
 .wheel__shadow-bottom {
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.5) 100%
+    rgb(255 255 255) 0%,
+    rgba(255, 255, 255, 0.3) 100%
   );
   left: 0;
   height: calc(42% + 2px);
   width: 100%;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 0.5px solid rgb(216 213 213 / 90%);
   position: relative;
   margin-top: -2px;
   z-index: 5;
+  margin-bottom: 10px;
 }
 
 .wheel__shadow-bottom {
   background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.9) 100%
+    to top,
+    rgb(255 255 255) 0%,
+    rgba(255, 255, 255, 0.3) 100%
   );
-  margin-top: 2px;
+  margin-top: 10px;
   border-bottom: none;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.3);
+  border-top: 0.5px solid rgb(216 213 213 / 90%);
 }
 
 .wheel__label {
@@ -72,10 +74,17 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   display: flex;
-  font-size: 20px;
-  font-weight: 400;
+  /* font-size: 35px;
+  font-weight: 900; */
   height: 100%;
   width: 100%;
   position: absolute;
   justify-content: flex-end;
+}
+
+.wheel__slide_text {
+  line-height: 2.4em;
+  font-size: 2em;
+  font-weight: 800;
+  font-style: bold;
 }

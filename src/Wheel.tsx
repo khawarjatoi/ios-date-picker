@@ -2,21 +2,28 @@ import React from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import './css/Wheel.css';
+import { days, years, months } from './Date';
 
 interface IProps {
   perspective?: string;
   loop?: boolean;
   width: number;
-  length: number;
-  initIdx?: number;
+  types: string;
+  initIdx: string;
   label?: string;
+  textColor?: string;
   setValue?: (_: any, idx: any) => string;
 }
 
 const Wheel = (props: IProps) => {
   const perspective = props.perspective || 'center';
-  const wheelSize = 20;
-  const slides = props.length;
+  const wheelSize = 15;
+  const slideType =
+    (props.types === 'days' && days) ||
+    (props.types === 'years' && years) ||
+    (props.types === 'months' && months);
+  // console.log(slideType);
+  const slides = slideType.length;
   const slideDegree = 360 / wheelSize;
   const slidesPerView = props.loop ? 9 : 1;
   const [sliderState, setSliderState] = React.useState(null);
@@ -24,7 +31,7 @@ const Wheel = (props: IProps) => {
     centered: props.loop,
     vertical: true,
     friction: 0.0025,
-    initial: props.initIdx || 0,
+    initial: slideType.indexOf(props.initIdx) || 0,
     loop: props.loop,
     dragSpeed: (val, instance) => {
       const height = instance.details().widthOrHeight;
@@ -70,7 +77,8 @@ const Wheel = (props: IProps) => {
       };
       const value = props.setValue
         ? props.setValue(i, sliderState.absoluteSlide + Math.round(distance))
-        : i;
+        : slideType[i];
+      // console.log(value, style);
       values.push({ style, value });
     }
     return values;
@@ -92,7 +100,12 @@ const Wheel = (props: IProps) => {
         <div className='wheel__slides' style={{ width: props.width + 'px' }}>
           {slideValues().map(({ style, value }, idx) => (
             <div className='wheel__slide' style={style} key={idx}>
-              <span>{value}</span>
+              <p
+                className='wheel__slide_text'
+                style={{ color: props.textColor }}
+              >
+                {value}
+              </p>
             </div>
           ))}
         </div>
@@ -102,6 +115,7 @@ const Wheel = (props: IProps) => {
             style={{
               transform: `translateZ(${radius}px)`,
               WebkitTransform: `translateZ(${radius}px)`,
+              color: props.textColor,
             }}
           >
             {props.label}
