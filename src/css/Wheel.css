@@ -1,21 +1,10 @@
 .wheel {
   display: block;
-  /* color: #fff; */
   color: rgb(70, 86, 230);
   height: 100%;
   overflow: visible;
   width: 100%;
 }
-/* .wheel--perspective-right .wheel__inner {
-  perspective-origin: calc(50% + 100px) 50%;
-  transform: translateX(10px);
-  -webkit-transform: translateX(10px);
-}
-.wheel--perspective-left .wheel__inner {
-  perspective-origin: calc(50% - 100px) 50%;
-  transform: translateX(-10px);
-  -webkit-transform: translateX(-10px);
-} */
 
 .wheel__inner {
   display: flex;
@@ -41,12 +30,15 @@
     rgba(255, 255, 255, 0.3) 100%
   );
   left: 0;
+  height: -webkit-calc(42% + 2px);
+  height: -moz-calc(42% + 2px);
   height: calc(42% + 2px);
   width: 100%;
-  border-bottom: 0.5px solid rgb(216 213 213 / 90%);
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
-  margin-top: -2px;
   z-index: 5;
+  border-bottom: 0.5px solid rgb(216 213 213 / 90%);
   margin-bottom: 10px;
 }
 
@@ -74,17 +66,19 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   display: flex;
-  /* font-size: 35px;
-  font-weight: 900; */
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   position: absolute;
   justify-content: flex-end;
+  padding-right: 1em;
+
+  height: 1.4em;
+  text-align: right;
+  word-spacing: 0.2em;
 }
 
 .wheel__slide_text {
   line-height: 2.4em;
   font-size: 2em;
   font-weight: 800;
-  font-style: bold;
 }
